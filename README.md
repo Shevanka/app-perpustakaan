@@ -19,7 +19,7 @@ Aplikasi ini dibuat untuk menyediakan sistem pengelolaan perpustakaan yang terst
 ### 1. Clone Repository
 
 ```bash
-git clone <URL_REPOSITORY>
+git clone https://github.com/Shevanka/app-perpustakaan.git
 cd app-perpustakaan
 ```
 
