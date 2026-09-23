@@ -5,7 +5,17 @@
 @section('content')
     <h1>Daftar Anggota</h1>
 
-    <p><a href="{{ route('members.create') }}" class="btn">+ Tambah Anggota</a></p>
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+        <a href="{{ route('members.create') }}" class="btn">+ Tambah Anggota</a>
+
+        <form action="{{ route('members.index') }}" method="GET" style="display: flex; gap: 8px;">
+            <input type="text" name="search" placeholder="Cari nama anggota..." value="{{ request('search') }}" style="padding: 6px 10px; width: 220px; border: 1px solid #ccc; border-radius: 4px; margin: 0;">
+            <button type="submit" class="btn" style="padding: 6px 12px;">Cari</button>
+            @if (request('search'))
+                <a href="{{ route('members.index') }}" class="btn" style="background: #6b7280; padding: 6px 12px;">Reset</a>
+            @endif
+        </form>
+    </div>
 
     <table>
         <thead>
@@ -48,5 +58,5 @@
         </tbody>
     </table>
 
-    <p><em>Catatan: data di atas masih data dummy (array statis di Controller). Form tambah/edit anggota dan CRUD lengkap anggota baru dibuat mulai Pertemuan 5.</em></p>
+    {{ $members->appends(request()->query())->links() }}
 @endsection
