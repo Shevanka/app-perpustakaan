@@ -24,6 +24,12 @@
         label { display: block; margin-top: 12px; font-weight: bold; }
         input, select, textarea { width: 100%; padding: 6px; margin-top: 4px; box-sizing: border-box; }
         .error { color: #b91c1c; font-size: 14px; margin-top: 4px; }
+
+        /* Loan form & detail styling */
+        .checkbox-list { border: 1px solid #ccc; border-radius: 4px; padding: 10px; margin-top: 4px; max-height: 200px; overflow-y: auto; background: #fff; }
+        .checkbox-list label { display: block; font-weight: normal; margin-top: 0; cursor: pointer; }
+        .checkbox-list input[type="checkbox"] { width: auto; margin-right: 6px; }
+        .readonly { background: #f3f4f6; padding: 8px; border-radius: 4px; margin-top: 4px; }
     </style>
 </head>
 <body>

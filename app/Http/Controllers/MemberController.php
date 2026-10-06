@@ -10,8 +10,7 @@ class MemberController extends Controller
 {
     public function index()
     {
-        $members = Member::when(request('search'), fn ($query, $search) =>
-            $query->where('nama', 'like', "%{$search}%")
+        $members = Member::when(request('search'), fn ($query, $search) => $query->where('nama', 'like', "%{$search}%")
         )->paginate(10);
 
         return view('members.index', compact('members'));
@@ -34,7 +33,7 @@ class MemberController extends Controller
 
     public function show(string $id)
     {
-        $member = Member::findOrFail($id);
+        $member = Member::with(['loans.loanItems.book', 'loans.user'])->findOrFail($id);
 
         return view('members.show', compact('member'));
     }
