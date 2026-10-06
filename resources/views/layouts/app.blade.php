@@ -25,6 +25,12 @@
         input, select, textarea { width: 100%; padding: 6px; margin-top: 4px; box-sizing: border-box; }
         .error { color: #b91c1c; font-size: 14px; margin-top: 4px; }
 
+        /* Badge status peminjaman */
+        .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; }
+        .badge-dikembalikan { background: #d1fae5; color: #065f46; }
+        .badge-dipinjam { background: #fef3c7; color: #92400e; }
+        .badge-terlambat { background: #fee2e2; color: #991b1b; }
+
         /* Loan form & detail styling */
         .checkbox-list { border: 1px solid #ccc; border-radius: 4px; padding: 10px; margin-top: 4px; max-height: 200px; overflow-y: auto; background: #fff; }
         .checkbox-list label { display: block; font-weight: normal; margin-top: 0; cursor: pointer; }
