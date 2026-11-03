@@ -8,9 +8,12 @@
             @endif
             <li><a href="{{ route('members.index') }}" class="{{ request()->routeIs('members.*') ? 'active' : '' }}">Anggota</a></li>
             <li><a href="{{ route('loans.index') }}" class="{{ request()->routeIs('loans.*') ? 'active' : '' }}">Peminjaman</a></li>
+            <li><a href="{{ route('profile.show') }}" class="{{ request()->routeIs('profile.*') ? 'active' : '' }}">Profil</a></li>
         </ul>
         <div class="navbar-user">
-            <span>{{ auth()->user()->name }} ({{ ucfirst(auth()->user()->role) }})</span>
+            <a href="{{ route('profile.show') }}" style="color: #cbd5e1; text-decoration: none;">
+                {{ auth()->user()->name }} ({{ ucfirst(auth()->user()->role) }})
+            </a>
             <form action="{{ route('logout') }}" method="POST" class="inline">
                 @csrf
                 <button type="submit" class="btn-logout">Logout</button>
