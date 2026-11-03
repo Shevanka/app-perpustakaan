@@ -39,6 +39,19 @@
         .checkbox-list label { display: block; font-weight: normal; margin-top: 0; cursor: pointer; }
         .checkbox-list input[type="checkbox"] { width: auto; margin-right: 6px; }
         .readonly { background: #f3f4f6; padding: 8px; border-radius: 4px; margin-top: 4px; }
+
+        /* Stats card styling */
+        .stats-grid { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px; }
+        .stat-card { flex: 1; min-width: 160px; background: #f8fafc; border: 1px solid #e5e7eb; border-radius: 8px; padding: 20px; text-align: center; }
+        .stat-card .value { font-size: 32px; font-weight: bold; color: #1e3a8a; }
+        .stat-card .label { margin-top: 6px; color: #6b7280; font-size: 14px; }
+
+        /* Pagination styling */
+        .pagination { margin-top: 16px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+        .pagination a { color: #2563eb; text-decoration: none; }
+        .pagination a:hover { text-decoration: underline; }
+        .pagination .pagination-current { font-weight: bold; color: #1e3a8a; }
+        .pagination .pagination-disabled { color: #9ca3af; }
     </style>
 </head>
 <body>
