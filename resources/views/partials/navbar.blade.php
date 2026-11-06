@@ -13,8 +13,9 @@
             <li><a href="{{ route('profile.show') }}" class="{{ request()->routeIs('profile.*') ? 'active' : '' }}">Profil</a></li>
         </ul>
         <div class="navbar-user">
-            <a href="{{ route('profile.show') }}" style="color: #cbd5e1; text-decoration: none;">
-                {{ auth()->user()->name }} ({{ ucfirst(auth()->user()->role) }})
+            <a href="{{ route('profile.show') }}" class="user-chip">
+                <span>👤</span>
+                <span>{{ auth()->user()->name }} ({{ ucfirst(auth()->user()->role) }})</span>
             </a>
             <form action="{{ route('logout') }}" method="POST" class="inline">
                 @csrf

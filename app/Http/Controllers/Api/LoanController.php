@@ -54,10 +54,11 @@ class LoanController extends Controller
     public function kembalikan(string $id)
     {
         $loan = Loan::with(['member', 'user', 'loanItems.book'])->findOrFail($id);
-
+        $today = now()->toDateString();
         $loan->update([
             'status' => 'dikembalikan',
-            'tanggal_dikembalikan' => now()->toDateString(),
+            'tanggal_kembali' => $today,
+            'tanggal_dikembalikan' => $today,
         ]);
 
         return new LoanResource($loan);

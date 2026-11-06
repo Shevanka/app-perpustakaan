@@ -38,16 +38,13 @@
                     </td>
                     <td>
                         <a href="{{ route('loans.show', $loan['id']) }}">Detail</a>
-                        |
                         <a href="{{ route('loans.edit', $loan['id']) }}">Edit</a>
-                        |
                         <form class="inline" action="{{ route('loans.destroy', $loan['id']) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button type="submit">Hapus</button>
                         </form>
                         @if ($loan['status'] === 'dipinjam')
-                            |
                             <form class="inline" action="{{ route('loans.kembalikan', $loan['id']) }}" method="POST">
                                 @csrf
                                 @method('PUT')

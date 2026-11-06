@@ -32,9 +32,7 @@
                     <td>{{ $book['category']['nama_kategori'] }}</td>
                     <td>
                         <a href="{{ route('books.show', $book['id']) }}">Detail</a>
-                        |
                         <a href="{{ route('books.edit', $book['id']) }}">Edit</a>
-                        |
                         <form class="inline" action="{{ route('books.destroy', $book['id']) }}" method="POST">
                             @csrf
                             @method('DELETE')

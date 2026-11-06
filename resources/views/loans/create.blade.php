@@ -23,7 +23,7 @@
                 <div class="error">{{ $message }}</div>
             @enderror
 
-            <p><em>Petugas pencatat: {{ auth()->user()->name }} (otomatis dari akun yang login).</em></p>
+            <div class="readonly" style="margin-top: 14px; font-size: 13px;">👤 Petugas Pencatat: <strong>{{ auth()->user()->name }}</strong> (otomatis dari sesi login)</div>
 
             <label for="tanggal_pinjam">Tanggal Pinjam</label>
             <input type="date" name="tanggal_pinjam" id="tanggal_pinjam" value="{{ old('tanggal_pinjam') }}">

@@ -31,7 +31,9 @@
                     </td>
                     <td>{{ $loan['tanggal_pinjam'] }}</td>
                     <td>{{ $loan['tanggal_kembali'] }}</td>
-                    <td>{{ ucfirst($loan['status']) }}</td>
+                    <td>
+                        <span class="badge badge-{{ $loan['status'] }}">{{ ucfirst($loan['status']) }}</span>
+                    </td>
                 </tr>
             @empty
                 <tr>
@@ -42,14 +44,20 @@
     </table>
 
     @if ($meta && $meta['last_page'] > 1)
-        <p>
+        <div class="pagination">
             @if ($meta['current_page'] > 1)
                 <a href="{{ route('loans.report', ['page' => $meta['current_page'] - 1]) }}">&laquo; Sebelumnya</a>
+            @else
+                <span class="pagination-disabled">&laquo; Sebelumnya</span>
             @endif
-            Halaman {{ $meta['current_page'] }} dari {{ $meta['last_page'] }}
+
+            <span class="pagination-current">Halaman {{ $meta['current_page'] }} dari {{ $meta['last_page'] }}</span>
+
             @if ($meta['current_page'] < $meta['last_page'])
-                <a href="{{ route('loans.report', ['page' => $meta['current_page'] + 1]) }}">Selanjutnya &raquo;</a>
+                <a href="{{ route('loans.report', ['page' => $meta['current_page'] + 1]) }}">Berikutnya &raquo;</a>
+            @else
+                <span class="pagination-disabled">Berikutnya &raquo;</span>
             @endif
-        </p>
+        </div>
     @endif
 @endsection

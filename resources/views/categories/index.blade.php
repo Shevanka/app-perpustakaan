@@ -24,7 +24,6 @@
                     <td>{{ $category['deskripsi'] ?? '-' }}</td>
                     <td>
                         <a href="{{ route('categories.edit', $category['id']) }}">Edit</a>
-                        |
                         <form class="inline" action="{{ route('categories.destroy', $category['id']) }}" method="POST">
                             @csrf
                             @method('DELETE')

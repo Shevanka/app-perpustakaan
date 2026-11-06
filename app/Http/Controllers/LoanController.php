@@ -99,6 +99,10 @@ class LoanController extends Controller
             'tanggal_kembali.after_or_equal' => 'Tanggal kembali tidak boleh sebelum tanggal pinjam.',
         ]);
 
+        if ($validated['status'] === 'dikembalikan' && empty($loan->tanggal_dikembalikan)) {
+            $validated['tanggal_dikembalikan'] = now()->toDateString();
+        }
+
         $loan->update($validated);
 
         return redirect()->route('loans.index')
@@ -118,9 +122,11 @@ class LoanController extends Controller
     public function kembalikan(string $id)
     {
         $loan = Loan::findOrFail($id);
+        $today = now()->toDateString();
         $loan->update([
             'status' => 'dikembalikan',
-            'tanggal_dikembalikan' => now()->toDateString(),
+            'tanggal_kembali' => $today,
+            'tanggal_dikembalikan' => $today,
         ]);
 
         return redirect()->route('loans.index')
