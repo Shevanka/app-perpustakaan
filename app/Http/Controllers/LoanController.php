@@ -13,13 +13,43 @@ use Illuminate\Support\Facades\Http;
 
 class LoanController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $loans = Loan::with(['member', 'user', 'loanItems.book'])
-            ->latest('id')
-            ->paginate(10);
+        $status = $request->query('status', 'all');
 
-        return view('loans.index', compact('loans'));
+        $counts = [
+            'all' => Loan::count(),
+            'dipinjam' => Loan::where('status', 'dipinjam')
+                ->whereDate('tanggal_kembali', '>=', now()->toDateString())
+                ->count(),
+            'dikembalikan' => Loan::where('status', 'dikembalikan')->count(),
+            'terlambat' => Loan::where('status', 'terlambat')
+                ->orWhere(function ($q) {
+                    $q->where('status', 'dipinjam')
+                        ->whereDate('tanggal_kembali', '<', now()->toDateString());
+                })->count(),
+        ];
+
+        $query = Loan::with(['member', 'user', 'loanItems.book'])->latest('id');
+
+        if ($status === 'dipinjam') {
+            $query->where('status', 'dipinjam')
+                ->whereDate('tanggal_kembali', '>=', now()->toDateString());
+        } elseif ($status === 'dikembalikan') {
+            $query->where('status', 'dikembalikan');
+        } elseif ($status === 'terlambat') {
+            $query->where(function ($q) {
+                $q->where('status', 'terlambat')
+                    ->orWhere(function ($sub) {
+                        $sub->where('status', 'dipinjam')
+                            ->whereDate('tanggal_kembali', '<', now()->toDateString());
+                    });
+            });
+        }
+
+        $loans = $query->paginate(10)->withQueryString();
+
+        return view('loans.index', compact('loans', 'status', 'counts'));
     }
 
     public function report(Request $request)

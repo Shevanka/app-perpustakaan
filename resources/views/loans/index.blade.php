@@ -11,6 +11,53 @@
         <a href="{{ route('loans.create') }}" class="btn">+ Tambah Peminjaman</a>
     </div>
 
+    <!-- Quick Filter Pills Neumorphic -->
+    <div style="display: flex; gap: 10px; margin-bottom: 22px; flex-wrap: wrap;">
+        <a href="{{ route('loans.index', ['status' => 'all']) }}"
+           style="text-decoration: none; padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s ease;
+           {{ $status === 'all'
+               ? 'background: #eef2f6; color: #3b82f6; box-shadow: inset 3px 3px 6px #d1d9e6, inset -3px -3px 6px #ffffff;'
+               : 'background: #eef2f6; color: #64748b; box-shadow: 4px 4px 10px #d1d9e6, -4px -4px 10px #ffffff;' }}">
+            <span>📑 Semua</span>
+            <span style="background: {{ $status === 'all' ? '#bfdbfe' : '#e2e8f0' }}; color: {{ $status === 'all' ? '#1d4ed8' : '#475569' }}; padding: 1px 7px; border-radius: 12px; font-size: 11px;">
+                {{ $counts['all'] }}
+            </span>
+        </a>
+
+        <a href="{{ route('loans.index', ['status' => 'dipinjam']) }}"
+           style="text-decoration: none; padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s ease;
+           {{ $status === 'dipinjam'
+               ? 'background: #eef2f6; color: #0284c7; box-shadow: inset 3px 3px 6px #d1d9e6, inset -3px -3px 6px #ffffff;'
+               : 'background: #eef2f6; color: #64748b; box-shadow: 4px 4px 10px #d1d9e6, -4px -4px 10px #ffffff;' }}">
+            <span>⏳ Sedang Dipinjam</span>
+            <span style="background: #bae6fd; color: #0369a1; padding: 1px 7px; border-radius: 12px; font-size: 11px;">
+                {{ $counts['dipinjam'] }}
+            </span>
+        </a>
+
+        <a href="{{ route('loans.index', ['status' => 'dikembalikan']) }}"
+           style="text-decoration: none; padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s ease;
+           {{ $status === 'dikembalikan'
+               ? 'background: #eef2f6; color: #059669; box-shadow: inset 3px 3px 6px #d1d9e6, inset -3px -3px 6px #ffffff;'
+               : 'background: #eef2f6; color: #64748b; box-shadow: 4px 4px 10px #d1d9e6, -4px -4px 10px #ffffff;' }}">
+            <span>✅ Sudah Dikembalikan</span>
+            <span style="background: #a7f3d0; color: #047857; padding: 1px 7px; border-radius: 12px; font-size: 11px;">
+                {{ $counts['dikembalikan'] }}
+            </span>
+        </a>
+
+        <a href="{{ route('loans.index', ['status' => 'terlambat']) }}"
+           style="text-decoration: none; padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s ease;
+           {{ $status === 'terlambat'
+               ? 'background: #eef2f6; color: #dc2626; box-shadow: inset 3px 3px 6px #d1d9e6, inset -3px -3px 6px #ffffff;'
+               : 'background: #eef2f6; color: #64748b; box-shadow: 4px 4px 10px #d1d9e6, -4px -4px 10px #ffffff;' }}">
+            <span>⚠️ Terlambat / Denda</span>
+            <span style="background: #fecaca; color: #b91c1c; padding: 1px 7px; border-radius: 12px; font-size: 11px;">
+                {{ $counts['terlambat'] }}
+            </span>
+        </a>
+    </div>
+
     <table>
         <thead>
             <tr>
@@ -89,7 +136,9 @@
                 </tr>
             @empty
                 <tr>
-                    <td colspan="10" style="text-align: center; padding: 32px; color: #94a3b8;">Belum ada data peminjaman.</td>
+                    <td colspan="10" style="text-align: center; padding: 32px; color: #94a3b8;">
+                        Tidak ada data peminjaman untuk filter status ini.
+                    </td>
                 </tr>
             @endforelse
         </tbody>

@@ -25,4 +25,13 @@ class Book extends Model
     {
         return $this->hasMany(LoanItem::class);
     }
+
+    public function getSampulUrlAttribute(): ?string
+    {
+        if ($this->sampul) {
+            return asset('storage/'.$this->sampul);
+        }
+
+        return null;
+    }
 }

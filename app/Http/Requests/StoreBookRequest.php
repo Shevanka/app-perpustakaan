@@ -25,6 +25,7 @@ class StoreBookRequest extends FormRequest
             'isbn' => 'nullable|string|max:20',
             'stok' => 'required|integer|min:0',
             'category_id' => 'required|integer|exists:categories,id',
+            'sampul' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
         ];
     }
 
@@ -45,6 +46,9 @@ class StoreBookRequest extends FormRequest
             'stok.min' => 'Stok tidak boleh kurang dari 0.',
             'category_id.required' => 'Kategori wajib dipilih.',
             'category_id.exists' => 'Kategori yang dipilih tidak valid.',
+            'sampul.image' => 'Berkas sampul harus berupa gambar.',
+            'sampul.mimes' => 'Format sampul harus jpeg, png, jpg, atau webp.',
+            'sampul.max' => 'Ukuran berkas sampul maksimal 2MB.',
         ];
     }
 }
