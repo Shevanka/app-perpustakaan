@@ -28,6 +28,9 @@ class LoanResource extends JsonResource
             'tanggal_kembali' => $this->tanggal_kembali,
             'tanggal_dikembalikan' => $this->tanggal_dikembalikan,
             'status' => $this->status,
+            'hari_terlambat' => $this->hari_terlambat,
+            'denda' => $this->denda,
+            'denda_formatted' => $this->formatted_denda,
             'books' => $this->loanItems->map(fn ($item) => [
                 'id' => $item->book?->id,
                 'judul' => $item->book?->judul,
