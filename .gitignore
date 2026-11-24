@@ -25,5 +25,9 @@ _ide_helper.php
 Homestead.json
 Homestead.yaml
 Thumbs.db
-.agents/hooks.json
 .cursor/hooks.json
+
+# Local tooling files (generated per machine)
+.agents/
+AGENTS.md
+boost.json
