@@ -4,6 +4,16 @@ Aplikasi web sistem informasi perpustakaan digital kampus yang dibangun mengguna
 
 ---
 
+## 📸 Screenshots
+
+| Dashboard | Daftar Buku |
+| :---: | :---: |
+| ![Dashboard](docs/screenshots/dashboard.png) | ![Daftar buku](docs/screenshots/books.png) |
+
+| Peminjaman | Laporan Peminjaman |
+| :---: | :---: |
+| ![Peminjaman](docs/screenshots/loans.png) | ![Laporan peminjaman](docs/screenshots/loan-report.png) |
+
 ## 🚀 Fitur Utama
 
 - **Autentikasi & Otorisasi Berbasis Peran (RBAC):**
